@@ -15,5 +15,12 @@ class ResizingCanvas(tk.Canvas):
         self.config(width=screen_width, height=screen_height)
         for i in self.fields:
             self.delete(i.rectangle)
-            print(screen_width, screen_height)
-            i.rectangle = self.create_rectangle((i.x / 5) * screen_width, (i.y / 5) * screen_height, ((i.x + 1) / 5) * screen_width, ((i.y + 1) / 5) * screen_height, fill='DarkOrchid1')
+            self.delete(i.text)
+            i.rectangle = self.create_rectangle((i.x / 5) * screen_width, (i.y / 5) * screen_height, ((i.x + 1) / 5) * screen_width, ((i.y + 1) / 5) * screen_height, fill=i.color)
+            if i.owner is not None:
+                self.delete(i.owner_rectangle)
+                i.owner_rectangle = self.create_rectangle((i.x / 5) * screen_width, (i.y / 5) * screen_height,
+                                                           ((i.x + 1) / 5) * screen_width,
+                                                           ((i.y + 0.2) / 5) * screen_height,
+                                                           fill='red')
+            i.text = self.create_text((i.x / 5) * screen_width + 0.1 * screen_width, (i.y / 5) * screen_height + 0.15 * screen_height, text=i.name, font=("Monospace", 20))

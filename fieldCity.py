@@ -2,8 +2,8 @@ import field
 
 
 class FieldCity(field.Field):
-    def __init__(self, board, position, name, value, rent_value, window, x, y, canvas):
-        super().__init__(board, position, name, value, window, x, y, canvas)
+    def __init__(self, board, position, name, value, rent_value, window, x, y, canvas, color):
+        super().__init__(board, position, name, value, window, x, y, canvas, color)
         self.rent_value = rent_value
         self.owner = None
 
