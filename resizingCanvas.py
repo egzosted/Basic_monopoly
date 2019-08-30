@@ -22,5 +22,6 @@ class ResizingCanvas(tk.Canvas):
                 i.owner_rectangle = self.create_rectangle((i.x / 5) * screen_width, (i.y / 5) * screen_height,
                                                            ((i.x + 1) / 5) * screen_width,
                                                            ((i.y + 0.2) / 5) * screen_height,
-                                                           fill='red')
+                                                           fill=i.owner.name)
             i.text = self.create_text((i.x / 5) * screen_width + 0.1 * screen_width, (i.y / 5) * screen_height + 0.15 * screen_height, text=i.name, font=("Monospace", 20))
+

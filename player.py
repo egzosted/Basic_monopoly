@@ -15,6 +15,9 @@ class Player:
     def pay(self, cost):
         self.cash -= cost
 
+    def collect(self, cost):
+        self.cash += cost
+
 
 
 

@@ -4,14 +4,16 @@ import resizingCanvas as rc
 
 
 class Field(ABC):
-    def __init__(self, board, position, name, value, window, x, y, canvas, color):
+    def __init__(self, board, position, name, value, window, x, y, canvas, color, gw):
         self.board = board
         self.position = position
         self.name = name
         self.value = value
+        self.canvas = canvas
         self.color = color
         self.x = x
         self.y = y
+        self.game_window = gw
         self.owner = None
         screen_width = window.winfo_width()
         screen_height = window.winfo_height()
