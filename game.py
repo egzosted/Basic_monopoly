@@ -19,6 +19,11 @@ class Game:
         self.game_window.draw_players()
         self.board.fields[self.current_player.position].handle_player(self.current_player)     # then field will perform an action
 
+    def find_owner(self, position):
+        owner_name = self.board.fields[position].owner
+        for i in self.players:
+            if i.name == owner_name:
+                return i
 
 
 # Metoda przeprowadzenia tury

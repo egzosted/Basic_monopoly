@@ -10,10 +10,10 @@ class FieldCity(field.Field):
     def handle_player(self, player):
         if self.owner is None:
             self.game_window.show_offer(self, player)
-        # elif board.owners[self.name] == playerID :
-        #     welcomeHost()
-        # else :
-        #     chargeRent()
+        elif self.owner == player.name:
+            self.game_window.show_sell(self, player)
+        else:
+            self.game_window.pay_rent(self, player)
 
     def first_owner(self, player):
         if player.cash >= self.value:
@@ -27,10 +27,12 @@ class FieldCity(field.Field):
                                                            ((self.y + 0.2) / 5) * screen_height,
                                                            fill=self.owner)
 
-    def welcomeHost(self):
-        #runs when host come to his field
-        pass
+    def sell_to_bank(self, player):
+        self.owner = None
+        player.collect(self.value / 2)
+        self.canvas.delete(self.owner_rectangle)
+        self.owner_rectangle = None
 
-    def chargeRent(self):
-        #runs when non-host come to field
-        pass
+    def charge_rent(self, player, owner):
+        player.pay(self.rent_value)
+        owner.collect(self.rent_value)

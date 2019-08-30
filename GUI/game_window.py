@@ -24,8 +24,14 @@ class GameWindow:
             self.l_players[index].place(x=0.5*screen_width, y=(0.4 + index / 10) * screen_height)
 
         # buttons for situation when field doesnt have owner
-        self.b_skip = tk.Button(self.window, text="Skip", bg="black", fg="white", font=("Courier", 20), command=self.buy_action)
+        self.b_skip = tk.Button(self.window, text="Skip", bg="black", fg="white", font=("Courier", 20))
         self.b_buy = tk.Button(self.window, text="Buy", bg="black", fg="white", font=("Courier", 20))
+
+        # button for situation where player on field is owner
+        self.b_sell = tk.Button(self.window, text="Sell", bg="black", fg="white", font=("Courier", 20))
+
+        # button for paying rent
+        self.b_pay = tk.Button(self.window, text="Pay", bg="black", fg="white", font=("Courier", 20))
 
         # circles that represent players on map
         self.symbols = [None] * len(self.l_players)
@@ -71,11 +77,37 @@ class GameWindow:
         self.b_buy.place(x=0.5 * screen_width, y=0.6 * screen_height)
         self.b_skip.lift()
         self.b_buy.lift()
+        self.b_skip.config(command=self.sell_action)
         self.b_buy.config(command=lambda: [city.first_owner(player), self.buy_action()])
+
+    def show_sell(self, city, player):
+        screen_width, screen_height = self.get_width_height()
+        self.b_skip.place(x=0.5 * screen_width, y=0.5 * screen_height)
+        self.b_sell.place(x=0.5 * screen_width, y=0.6 * screen_height)
+        self.b_skip.lift()
+        self.b_sell.lift()
+        self.b_skip.config(command=self.sell_action)
+        self.b_sell.config(command=lambda: [city.sell_to_bank(player), self.sell_action()])
+
+    def pay_rent(self, city, player):
+        screen_width, screen_height = self.get_width_height()
+        self.b_pay.place(x=0.5 * screen_width, y=0.5 * screen_height)
+        self.b_pay.lift()
+        owner = self.this_game.find_owner(player.position)
+        self.b_pay.config(command=lambda: [city.charge_rent(player, owner), self.pay_action()])
 
     def buy_action(self):
         self.b_skip.lower()
         self.b_buy.lower()
+        self.show_menu()
+
+    def sell_action(self):
+        self.b_skip.lower()
+        self.b_sell.lower()
+        self.show_menu()
+
+    def pay_action(self):
+        self.b_pay.lower()
         self.show_menu()
 
     def draw_players(self):
