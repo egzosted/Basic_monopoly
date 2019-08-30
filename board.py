@@ -5,12 +5,13 @@ import tkinter as tk
 class Board:
     def __init__(self, window, gw):
         self.size = 16  # 12 cities and 4 special fields
+        self.game_window = gw
         self.window = window
         self.window.update()
         screen_width = self.window.winfo_width()
         screen_height = self.window.winfo_height()
         self.fields = []
-        self.canvas = rC.ResizingCanvas(self.window, self.fields, width=screen_width, height=screen_height)
+        self.canvas = rC.ResizingCanvas(self.window, self.fields, self.game_window, width=screen_width, height=screen_height)
         self.canvas.pack()
 
         self.fields.append(fieldBonus.FieldBonus(self, 0, "Start", 200, window, 0, 4, self.canvas, "snow", gw, True))
@@ -29,7 +30,3 @@ class Board:
         self.fields.append(fieldCity.FieldCity(self, 13, "Beijing", 1000, 500, window, 3, 4, self.canvas, "LightPink1", gw))
         self.fields.append(fieldCity.FieldCity(self, 14, "Seoul", 1100, 550, window, 2, 4, self.canvas, "LightPink2", gw))
         self.fields.append(fieldCity.FieldCity(self, 15, "Tokyo", 1200, 600, window, 1, 4, self.canvas, "LightPink3", gw))
-
-# Metoda przeprowadzenia tury
-
-# slownik nieruchomosci i ich wlasciciela

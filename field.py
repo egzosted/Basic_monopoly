@@ -1,6 +1,4 @@
 from abc import ABC, abstractmethod
-import tkinter as tk
-import resizingCanvas as rc
 
 
 class Field(ABC):
@@ -25,7 +23,6 @@ class Field(ABC):
                                                            ((x + 1) / 5) * screen_width,
                                                            ((y + 0.2) / 5) * screen_height,
                                                            fill=self.owner)
-
 
     @abstractmethod
     def handle_player(self, player):

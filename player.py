@@ -6,6 +6,7 @@ class Player:
         self.name = name
         self.cash = cash
         self.position = 0
+        self.oval = None    # symbol of player
 
     def move(self, board_size):
         shift = random.randint(1, 6)    # player can move around maximally 6 fields
@@ -17,20 +18,3 @@ class Player:
 
     def collect(self, cost):
         self.cash += cost
-
-
-
-
-# atrybuty:
-# kasa
-# nazwa
-# pozycja
-
-# metody:
-# ruch (odpala metode obslugi dla danego pola)
-# wystawienie oferty sprzedazy nieruchomosci
-# przyjecie oferty kupna
-# zaplacenie/otrzymanie bonusu
-
-
-# ziomus to player
