@@ -77,7 +77,7 @@ class GameWindow:
         self.b_buy.place(x=0.5 * screen_width, y=0.6 * screen_height)
         self.b_skip.lift()
         self.b_buy.lift()
-        self.b_skip.config(command=self.sell_action)
+        self.b_skip.config(command=self.buy_action)
         self.b_buy.config(command=lambda: [city.first_owner(player), self.buy_action()])
 
     def show_sell(self, city, player):
