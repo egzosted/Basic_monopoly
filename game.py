@@ -1,6 +1,5 @@
-import board, player
-import tkinter as tk
-from GUI import game_window as g_w
+import board
+import player
 
 
 class Game:
@@ -17,7 +16,8 @@ class Game:
         self.game_window.hide_menu()
         self.current_player.move(self.board.size)   # player has to get new position
         self.game_window.draw_players()
-        self.board.fields[self.current_player.position].handle_player(self.current_player)     # then field will perform an action
+        self.board.fields[self.current_player.position].handle_player(
+            self.current_player)     # then field will perform an action
 
     def find_owner(self, position):
         owner_name = self.board.fields[position].owner
