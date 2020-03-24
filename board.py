@@ -14,11 +14,11 @@ class Board:
         self.game_window = gw
         self.window = window
         self.window.update()
-        self.coordinates = [i for i in range(MAP_SIZE)]
-        self.values = [i * 100 for i in range(1, MAP_SIZE)]
-        self.rent_values = [i * 50 for i in range(1, MAP_SIZE)]
-        self.x = [i for i in range(5)]
-        self.y = [i for i in range(5)]
+        self.coordinates = [i for i in range(MAP_SIZE)]  # 1d coordinates of fields
+        self.values = [(i + 1) * 100 for i in range(0, MAP_SIZE)]  # value of field to buy
+        self.rent_values = [(i + 1) * 50 for i in range(0, MAP_SIZE)]  # value of rent and sell
+        self.x = [i for i in range(5)]  # x coordinate in 2d
+        self.y = [i for i in range(5)]  # y coordinate in 2d
         screen_width = self.window.winfo_width()
         screen_height = self.window.winfo_height()
         self.fields = []
