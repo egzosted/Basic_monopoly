@@ -68,7 +68,7 @@ class GameWindow:
 
     def show_menu(self):
         self.this_game.current_player_index = (
-            self.this_game.current_player_index + 1) % len(self.l_players)
+            self.this_game.current_player_index + 1) % len(self.this_game.players)
         self.this_game.current_player = self.this_game.players[self.this_game.current_player_index]
         # self.l_monopoly.lift()
         self.l_current_player.lift()
@@ -121,6 +121,14 @@ class GameWindow:
     def pay_action(self):
         self.b_pay.lower()
         self.show_menu()
+
+    def remove_lplayer(self, index):
+        delete_l = None
+        for i, value in enumerate(self.l_players):
+            if index == i:
+                delete_l = value
+        self.l_players.remove(delete_l)
+        delete_l.destroy()
 
     def draw_players(self):
         # first we delete old symbols

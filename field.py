@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import tkinter.messagebox as msg
 MAP_SIZE = 16
 
 
@@ -33,6 +34,14 @@ class Field(ABC):
                     self.board.fields[i].sell_to_bank(player)
                 if player.cash >= self.rent_value:
                     break
+        if player.cash < self.rent_value:
+            index = self.board.this_game.remove_player(player.name)
+            self.board.this_game.game_window.remove_lplayer(index)
+            if len(self.board.this_game.players) == 1:  # only winner left
+                msg.showinfo(title='end',
+                             message=f'End of game. The winner is {self.board.this_game.players[0].name}')
+            return True
+        return False
 
     @abstractmethod
     def handle_player(self, player):

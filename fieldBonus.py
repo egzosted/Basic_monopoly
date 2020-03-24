@@ -9,8 +9,10 @@ class FieldBonus(field.Field):
 
     def handle_player(self, player):
         if self.positive:
-            self.check_bankruptcy(player)
             player.collect(self.value)
         else:
+            if self.check_bankruptcy(player):
+                self.game_window.show_menu()
+                return
             player.pay(self.value)
         self.game_window.show_menu()

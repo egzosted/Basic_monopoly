@@ -9,10 +9,11 @@ EXTRA_VALUE = 200  # cash of extra field
 
 
 class Board:
-    def __init__(self, window, gw):
+    def __init__(self, window, gw, game):
         self.size = MAP_SIZE  # 12 cities and 4 special fields
         self.game_window = gw
         self.window = window
+        self.this_game = game
         self.window.update()
         self.coordinates = [i for i in range(MAP_SIZE)]  # 1d coordinates of fields
         self.values = [(i + 1) * 100 for i in range(0, MAP_SIZE)]  # value of field to buy

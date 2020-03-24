@@ -1,14 +1,15 @@
 import board
 import player
+import tkinter.messagebox as msg
 
 
 class Game:
     def __init__(self, window, players_color, gw):
         self.game_window = gw
-        self.board = board.Board(window, self.game_window)
+        self.board = board.Board(window, self.game_window, self)
         self.players = []
         for i in players_color:
-            self.players.append(player.Player(i, 2000))
+            self.players.append(player.Player(i, 100))
         self.current_player_index = 0
         self.current_player = self.players[0]
 
@@ -25,6 +26,16 @@ class Game:
             if i.name == owner_name:
                 return i
 
+    def remove_player(self, name):
+        delete_player = None
+        ind = 0
+        for index, i in enumerate(self.players):
+            if i.name == name:
+                delete_player = i
+                ind = index
+        self.players.remove(delete_player)
+        msg.showinfo(title='Bankructwo', message=f'Koniec gracza {name}')
+        return ind
 
 # Metoda przeprowadzenia tury
 
