@@ -1,4 +1,5 @@
 import field
+MAP_SIZE = 16
 
 
 class FieldCity(field.Field):
@@ -29,10 +30,11 @@ class FieldCity(field.Field):
 
     def sell_to_bank(self, player):
         self.owner = None
-        player.collect(self.value / 2)
+        player.collect(self.rent_value / 2)
         self.canvas.delete(self.owner_rectangle)
         self.owner_rectangle = None
 
     def charge_rent(self, player, owner):
+        self.check_bankruptcy(player)
         player.pay(self.rent_value)
         owner.collect(self.rent_value)

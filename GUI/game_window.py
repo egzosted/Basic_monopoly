@@ -98,7 +98,7 @@ class GameWindow:
         self.b_sell.lift()
         self.b_skip.config(command=self.sell_action)
         self.b_sell.config(command=lambda: [city.sell_to_bank(
-            player), self.sell_action()], text=f'Sell for {city.value}')
+            player), self.sell_action()], text=f'Sell for {city.rent_value}')
 
     def pay_rent(self, city, player):
         screen_width, screen_height = self.get_width_height()
@@ -106,7 +106,7 @@ class GameWindow:
         self.b_pay.lift()
         owner = self.this_game.find_owner(player.position)
         self.b_pay.config(command=lambda: [city.charge_rent(
-            player, owner), self.pay_action()], text=f'Pay {city.value}')
+            player, owner), self.pay_action()], text=f'Pay {city.rent_value}')
 
     def buy_action(self):
         self.b_skip.lower()

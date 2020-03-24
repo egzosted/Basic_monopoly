@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+MAP_SIZE = 16
 
 
 class Field(ABC):
@@ -24,6 +25,14 @@ class Field(ABC):
                                                            ((x + 1) / 5) * screen_width,
                                                            ((y + 0.2) / 5) * screen_height,
                                                            fill=self.owner)
+
+    def check_bankruptcy(self, player):
+        if player.cash < self.rent_value:
+            for i in range(MAP_SIZE):
+                if self.board.fields[i].owner == player.name:
+                    self.board.fields[i].sell_to_bank(player)
+                if player.cash >= self.rent_value:
+                    break
 
     @abstractmethod
     def handle_player(self, player):

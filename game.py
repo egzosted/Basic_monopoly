@@ -8,7 +8,7 @@ class Game:
         self.board = board.Board(window, self.game_window)
         self.players = []
         for i in players_color:
-            self.players.append(player.Player(i, 1000))
+            self.players.append(player.Player(i, 2000))
         self.current_player_index = 0
         self.current_player = self.players[0]
 
