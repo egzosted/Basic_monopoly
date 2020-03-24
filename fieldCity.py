@@ -23,9 +23,9 @@ class FieldCity(field.Field):
             screen_width = self.game_window.window.winfo_width()
             screen_height = self.game_window.window.winfo_height()
             self.owner_rectangle = self.canvas.create_rectangle((self.x / 5) * screen_width, (self.y / 5) * screen_height,
-                                                           ((self.x + 1) / 5) * screen_width,
-                                                           ((self.y + 0.2) / 5) * screen_height,
-                                                           fill=self.owner)
+                                                                ((self.x + 1) / 5) * screen_width,
+                                                                ((self.y + 0.2) / 5) * screen_height,
+                                                                fill=self.owner)
 
     def sell_to_bank(self, player):
         self.owner = None

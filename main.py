@@ -10,4 +10,3 @@ players_color = color.players_color
 
 
 game = gw.GameWindow(players_color)
-

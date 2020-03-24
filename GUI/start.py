@@ -4,7 +4,8 @@ import tkinter as tk
 class Start:
     def __init__(self):
         self.window = tk.Tk()
-        self.l_introduction = tk.Label(self.window, text="Welcome to Monopoly!", font=('Courier', 35))
+        self.l_introduction = tk.Label(
+            self.window, text="Welcome to Monopoly!", font=('Courier', 35))
         self.l_enter = tk.Label(self.window, text="Enter number of players: ", font=('Courier', 24))
         self.e_players = tk.Entry(self.window)
         self.b_confirm = tk.Button(self.window, text="Confirm", command=self.get_num_players)

@@ -15,9 +15,10 @@ class Field(ABC):
         self.owner = None
         screen_width = window.winfo_width()
         screen_height = window.winfo_height()
-        self.rectangle = canvas.create_rectangle((x / 5) * screen_width, (y / 5) * screen_height, ((x + 1) / 5) * screen_width, ((y + 1) / 5) * screen_height, fill='green')
+        self.rectangle = canvas.create_rectangle((x / 5) * screen_width, (y / 5) * screen_height, ((
+            x + 1) / 5) * screen_width, ((y + 1) / 5) * screen_height, fill='green')
         self.text = canvas.create_text((self.x / 5) * screen_width + 0.1 * screen_width,
-                                (self.y / 5) * screen_height + 0.15 * screen_height, text=self.name, font=("Monospace", 20))
+                                       (self.y / 5) * screen_height + 0.15 * screen_height, text=self.name, font=("Monospace", 20))
         if self.owner is not None:
             self.owner_rectangle = canvas.create_rectangle((x / 5) * screen_width, (y / 5) * screen_height,
                                                            ((x + 1) / 5) * screen_width,
