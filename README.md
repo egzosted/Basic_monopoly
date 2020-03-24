@@ -1,1 +1,1 @@
-# Hello
+Like in description, it's monopoly wannabe simple game with many lacking features. Launch main.py choose number of players (no AI only real players) and just play. You have only 2 states, ownership of city or no possession. Also you can't negotiate with your buildings. Only possible option is selling it to bank.
